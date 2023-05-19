@@ -132,7 +132,7 @@ Following, is a basic example showing the structure of a `.config` file containi
 						"Message":"Second"
 					},
 					{
-						"Account":"Account 1",
+						"Account":"Account 3",
 						"Message":"Third"
 					}
 				]
