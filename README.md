@@ -121,7 +121,7 @@ Following, is a basic example showing the structure of a `.config` file containi
 			"CanBuyEDaler":(AccountName)->true,
 			"GetOptions":(Request)->
 			(
-				Sleep(2000),
+				Sleep(2000);
 				[
 					{
 						"Account":"Account 1",
