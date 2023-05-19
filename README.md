@@ -32,6 +32,7 @@ They can also be used standalone.
 | [Waher.IoTGateway](https://www.nuget.org/packages/Waher.IoTGateway/)               | Contains the [IoT Gateway](https://github.com/PeterWaher/IoTGateway) hosting environment. |
 | [Waher.Runtime.Inventory](https://www.nuget.org/packages/Waher.Runtime.Inventory/) | Maintains an inventory of type definitions in the runtime environment, and permits easy instantiation of suitable classes, and inversion of control (IoC). |
 | [Waher.Script](https://www.nuget.org/packages/Waher.Script/)                       | Defines an extensible [script language](https://lab.tagroot.io/Script.md) and processor. The installable package extends the script language with functions that make it possible to publish integrations with service providers using only [script](https://lab.tagroot.io/Script.md). |
+| [Waher.Script.Graph](https://www.nuget.org/packages/Waher.Script.Graph/)           | Defines script extensions for graphs and images. |
 
 ## Installable Package
 
