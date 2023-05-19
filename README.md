@@ -50,7 +50,7 @@ package using the following information:
 | Package information ||
 |:-----------------|:----|
 | Package          | `TAG.ScriptProviders.package` |
-| Installation key | TBD |
+| Installation key | `lXIkgFyVhmHhjxSqtGUtgmRkqXV2xHkojl0vaz+RPWNvoycZR4dEzdAnKFemiA6KvakEb9r6juSAf3b1986aba9c6d9e3b7803981660dc55` |
 | More Information | TBD |
 
 ## Building, Compiling & Debugging
