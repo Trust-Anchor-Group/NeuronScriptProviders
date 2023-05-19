@@ -120,20 +120,23 @@ Following, is a basic example showing the structure of a `.config` file containi
 			"Supports":(Currency)->true,
 			"CanBuyEDaler":(AccountName)->true,
 			"GetOptions":(Request)->
-			[
-				{
-					"Account":"Account 1",
-					"Message":"First"
-				},
-				{
-					"Account":"Account 2",
-					"Message":"Second"
-				},
-				{
-					"Account":"Account 1",
-					"Message":"Third"
-				}
-			],
+			(
+				Sleep(2000),
+				[
+					{
+						"Account":"Account 1",
+						"Message":"First"
+					},
+					{
+						"Account":"Account 2",
+						"Message":"Second"
+					},
+					{
+						"Account":"Account 1",
+						"Message":"Third"
+					}
+				]
+			),
 			"BuyEDaler":(Request)->
 			(
 				Sleep(5000);
