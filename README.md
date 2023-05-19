@@ -116,10 +116,24 @@ Following, is a basic example showing the structure of a `.config` file containi
 			"IconUrl":"https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
 			"IconWidth":282,
 			"IconHeight":353,
-			"ContractTemplateId":null,
+			"ContractTemplateId":"2bfab592-1c24-d090-7419-d51e36f8377f@legal.lab.tagroot.io",
 			"Supports":(Currency)->true,
 			"CanBuyEDaler":(AccountName)->true,
-			"GetOptions":(Request)->[],
+			"GetOptions":(Request)->
+			[
+				{
+					"Account":"Account 1",
+					"Message":"First"
+				},
+				{
+					"Account":"Account 2",
+					"Message":"Second"
+				},
+				{
+					"Account":"Account 1",
+					"Message":"Third"
+				}
+			],
 			"BuyEDaler":(Request)->
 			(
 				Sleep(5000);
@@ -139,3 +153,4 @@ The solution contains a set of examples to illustrate how different services can
 | File Name                                               | Description |
 |:--------------------------------------------------------|:------------|
 | [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config) | Mock service that publishes a simple service for buying eDaler, including payment options. |
+| [Mock.BuyEDaler.xml](Examples/Mock.BuyEDaler.xml)       | Mock smart contract used by the example service defined in [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config). |

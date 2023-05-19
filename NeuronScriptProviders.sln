@@ -13,6 +13,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5017484F-5469-431F-A40C-20D228FB7050}"
 	ProjectSection(SolutionItems) = preProject
 		Examples\Mock.BuyEDaler.config = Examples\Mock.BuyEDaler.config
+		Examples\Mock.BuyEDaler.xml = Examples\Mock.BuyEDaler.xml
 	EndProjectSection
 EndProject
 Global
