@@ -91,8 +91,8 @@ methods that are recognized by the different functions. Names are case-insensiti
 | `Support`            |          |                     | Alias for `Supports` |
 | `CanBuyEDaler`       | Optional | λ(String)           | If a given account (given the acclunt name) is allowed to buy eDaler using the service. Result can be a boolean value or a Grade enumerated value. |
 | `CanBuy`             |          |                     | Alias for `CanBuyEDaler` |
-| `GetOptions`         | Optional | λ(Request)          | Gets payment options to present to the user. The `Reqeust` argument is of type `OptionsRequest`. The result is an array of objects ex-nihilo, each object representing an option, and each field or property in the object represents a contract parameter and value. |
-| `BuyEDaler`		   | Required | λ(Request)          | Performs the requested task to buy eDaler using the service. Result can be number with the amount actually bought, or a physical quantity, with the unit representing the currency used, and the magnitude the amount. If a string is returned, it is considered an error, and no eDaler is assumed to have been bought. |
+| `GetOptions`         | Optional | λ(Request)          | Gets payment options to present to the user. The `Reqeust` argument is of type [`OptionsRequest`](TAG.Payments.Script/Providers/BuyEDaler/OptionsRequest.cs). The result is an array of objects ex-nihilo, each object representing an option, and each field or property in the object represents a contract parameter and value. |
+| `BuyEDaler`		   | Required | λ(Request)          | Performs the requested task to buy eDaler using the service. The `Reqeust` argument is of type [`BuyRequest`](TAG.Payments.Script/Providers/BuyEDaler/BuyRequest.cs). Result can be number with the amount actually bought, or a physical quantity, with the unit representing the currency used, and the magnitude the amount. If a string is returned, it is considered an error, and no eDaler is assumed to have been bought. |
 | `Buy`				   |          |                     | Alias for `BuyEDaler` |
 
 ## .config-files
