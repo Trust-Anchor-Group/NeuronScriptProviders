@@ -7,7 +7,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 	/// <summary>
 	/// Class representing a request to buy eDaler.
 	/// </summary>
-	public class BuyRequest : OptionsRequest
+	public class PaymentRequest : OptionsRequest
 	{
 		/// <summary>
 		/// Class representing a request to buy eDaler.
@@ -18,7 +18,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <param name="CancelUrl">Callback URL if cancelled</param>
 		/// <param name="ClientUrlCallback">Method to call if URL is needed to be sent to client.</param>
 		/// <param name="State">State object to pass on to callback method.</param>
-		public BuyRequest(IDictionary<CaseInsensitiveString, object> ContractParameters,
+		public PaymentRequest(IDictionary<CaseInsensitiveString, object> ContractParameters,
 			IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties, decimal Amount, string Currency,
 			string SuccessUrl, string FailureUrl, string CancelUrl, ClientUrlEventHandler ClientUrlCallback, object State)
 			: base(IdentityProperties, SuccessUrl, FailureUrl, CancelUrl, ClientUrlCallback, State)

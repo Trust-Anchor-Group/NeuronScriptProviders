@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TAG.Payments.Script.Providers.BuyEDaler;
 using Waher.Content;
 using Waher.Events;
 using Waher.Persistence;
@@ -12,17 +13,17 @@ using Waher.Script.Abstraction.Elements;
 using Waher.Script.Model;
 using Waher.Script.Objects;
 
-namespace TAG.Payments.Script.Providers.BuyEDaler
+namespace TAG.Payments.Script.Providers.SellEDaler
 {
 	/// <summary>
-	/// Represents a service for buying eDaler, based on script.
+	/// Represents a service for selling eDaler, based on script.
 	/// </summary>
-	public class BuyEDalerService : IBuyEDalerService
+	public class SellEDalerService : ISellEDalerService
 	{
 		private readonly Variables variables;
 
 		/// <summary>
-		/// Represents a service for buying eDaler, based on script.
+		/// Represents a service for selling eDaler, based on script.
 		/// </summary>
 		/// <param name="Id">Identifier of service.</param>
 		/// <param name="Name">Name of se+rvice.</param>
@@ -31,38 +32,38 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <param name="IconHeight">Height of icon</param>
 		/// <param name="TemplateContractId">Lambda expression (or null) for defining contract ID template.</param>
 		/// <param name="Supports">Supports method.</param>
-		/// <param name="CanBuyEDaler">CanBuyEDaler method.</param>
+		/// <param name="CanSellEDaler">CanSellEDaler method.</param>
 		/// <param name="GetOptions">GetOptions method.</param>
 		/// <param name="Variables">Variables collection.</param>
-		public BuyEDalerService(string Id, string Name, string IconUrl, int IconWidth, int IconHeight, string TemplateContractId,
-			ILambdaExpression Supports, ILambdaExpression CanBuyEDaler, ILambdaExpression GetOptions, ILambdaExpression BuyEDaler,
+		public SellEDalerService(string Id, string Name, string IconUrl, int IconWidth, int IconHeight, string TemplateContractId,
+			ILambdaExpression Supports, ILambdaExpression CanSellEDaler, ILambdaExpression GetOptions, ILambdaExpression SellEDaler,
 			Variables Variables)
 		{
 			if (!(Supports is null) && Supports.NrArguments != 1)
 				throw new ArgumentException("Supports method must take one argument.", nameof(Supports));
 
-			if (!(CanBuyEDaler is null) && CanBuyEDaler.NrArguments != 1)
-				throw new ArgumentException("CanBuyEDaler method must take one argument.", nameof(CanBuyEDaler));
+			if (!(CanSellEDaler is null) && CanSellEDaler.NrArguments != 1)
+				throw new ArgumentException("CanSellEDaler method must take one argument.", nameof(CanSellEDaler));
 
 			if (!(GetOptions is null) && GetOptions.NrArguments != 1)
 				throw new ArgumentException("GetOptions method must take one argument.", nameof(GetOptions));
 
-			if (BuyEDaler is null)
-				throw new ArgumentNullException(nameof(BuyEDaler));
+			if (SellEDaler is null)
+				throw new ArgumentNullException(nameof(SellEDaler));
 
-			if (BuyEDaler.NrArguments != 1)
-				throw new ArgumentException("BuyEDaler method must take one argument.", nameof(BuyEDaler));
+			if (SellEDaler.NrArguments != 1)
+				throw new ArgumentException("SellEDaler method must take one argument.", nameof(SellEDaler));
 
 			this.Id = Id;
 			this.Name = Name;
 			this.IconUrl = IconUrl;
 			this.IconWidth = IconWidth;
 			this.IconHeight = IconHeight;
-			this.BuyEDalerTemplateContractId = TemplateContractId;
+			this.SellEDalerTemplateContractId = TemplateContractId;
 			this.SupportsLambda = Supports;
-			this.CanBuyEDalerLambda = CanBuyEDaler;
+			this.CanSellEDalerLambda = CanSellEDaler;
 			this.GetOptionsLambda = GetOptions;
-			this.BuyEDalerLambda = BuyEDaler;
+			this.SellEDalerLambda = SellEDaler;
 
 			this.variables = new Variables();
 			Variables.CopyTo(this.variables);
@@ -94,9 +95,9 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		public int IconHeight { get; }
 
 		/// <summary>
-		/// Optional template contract ID for buying eDaler.
+		/// Optional template contract ID for selling eDaler.
 		/// </summary>
-		public string BuyEDalerTemplateContractId { get; }
+		public string SellEDalerTemplateContractId { get; }
 
 		/// <summary>
 		/// Supports method.
@@ -104,9 +105,9 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		public ILambdaExpression SupportsLambda { get; }
 
 		/// <summary>
-		/// CanBuyEDaler method.
+		/// CanSellEDaler method.
 		/// </summary>
-		public ILambdaExpression CanBuyEDalerLambda { get; }
+		public ILambdaExpression CanSellEDalerLambda { get; }
 
 		/// <summary>
 		/// GetOptions method.
@@ -114,14 +115,14 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		public ILambdaExpression GetOptionsLambda { get; }
 
 		/// <summary>
-		/// BuyEDaler method.
+		/// SellEDaler method.
 		/// </summary>
-		public ILambdaExpression BuyEDalerLambda { get; }
+		public ILambdaExpression SellEDalerLambda { get; }
 
 		/// <summary>
 		/// Reference to the service provider.
 		/// </summary>
-		public IBuyEDalerServiceProvider BuyEDalerServiceProvider => ScriptProviders.buyEDalerServiceProvider;
+		public ISellEDalerServiceProvider SellEDalerServiceProvider => ScriptProviders.sellEDalerServiceProvider;
 
 		/// <summary>
 		/// If a given currency is supported.
@@ -160,11 +161,11 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		}
 
 		/// <summary>
-		/// If a given account can buy eDaler.
+		/// If a given account can sell eDaler.
 		/// </summary>
 		/// <param name="AccountName">Name of account.</param>
-		/// <returns>If the account is allowed to buy eDaler.</returns>
-		public async Task<bool> CanBuyEDaler(CaseInsensitiveString AccountName)
+		/// <returns>If the account is allowed to sell eDaler.</returns>
+		public async Task<bool> CanSellEDaler(CaseInsensitiveString AccountName)
 		{
 			if (this.SupportsLambda is null)
 				return true;
@@ -172,7 +173,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 			{
 				try
 				{
-					IElement E = await this.CanBuyEDalerLambda.EvaluateAsync(new IElement[] { new StringValue(AccountName.Value) }, this.variables);
+					IElement E = await this.CanSellEDalerLambda.EvaluateAsync(new IElement[] { new StringValue(AccountName.Value) }, this.variables);
 					object Result = E.AssociatedObjectValue;
 
 					if (Result is bool b)
@@ -183,7 +184,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 						return b;
 					else
 					{
-						Log.Error("Cannot evaluate if an account (" + AccountName.Value + ") is allowed to buy eDaler. Result: " + (Result?.ToString() ?? "null"), this.Id);
+						Log.Error("Cannot evaluate if an account (" + AccountName.Value + ") is allowed to sell eDaler. Result: " + (Result?.ToString() ?? "null"), this.Id);
 						return false;
 					}
 				}
@@ -196,7 +197,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		}
 
 		/// <summary>
-		/// Called when a user requests to receive payment options available for buying eDaler.
+		/// Called when a user requests to receive payment options available for selling eDaler.
 		/// </summary>
 		/// <param name="IdentityProperties">Identity properties.</param>
 		/// <param name="SuccessUrl">Callback URL if successful.</param>
@@ -205,7 +206,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <param name="ClientUrlCallback">Method to call if URL is needed to be sent to client.</param>
 		/// <param name="State">State object to pass on to callback method.</param>
 		/// <returns>Array of available options.</returns>
-		public async Task<IDictionary<CaseInsensitiveString, object>[]> GetPaymentOptionsForBuyingEDaler(
+		public async Task<IDictionary<CaseInsensitiveString, object>[]> GetPaymentOptionsForSellingEDaler(
 			IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties, string SuccessUrl,
 			string FailureUrl, string CancelUrl, ClientUrlEventHandler ClientUrlCallback, object State)
 		{
@@ -270,7 +271,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		}
 
 		/// <summary>
-		/// Called when a user wants to buy eDaler using the service.
+		/// Called when a user wants to sell eDaler using the service.
 		/// </summary>
 		/// <param name="ContractParameters">Contract Parameters.</param>
 		/// <param name="IdentityProperties">Identity Properties</param>
@@ -282,7 +283,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <param name="ClientUrlCallback">Method to call if URL is needed to be sent to client.</param>
 		/// <param name="State">State object to pass on to callback method.</param>
 		/// <returns>Payment result.</returns>
-		public async Task<PaymentResult> BuyEDaler(IDictionary<CaseInsensitiveString, object> ContractParameters,
+		public async Task<PaymentResult> SellEDaler(IDictionary<CaseInsensitiveString, object> ContractParameters,
 			IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties,
 			decimal Amount, string Currency, string SuccessUrl, string FailureUrl, string CancelUrl,
 			ClientUrlEventHandler ClientUrlCallback, object State)
@@ -291,7 +292,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 			{
 				PaymentRequest Request = new PaymentRequest(ContractParameters, IdentityProperties, Amount, Currency,
 					SuccessUrl, FailureUrl, CancelUrl, ClientUrlCallback, State);
-				IElement E = await this.BuyEDalerLambda.EvaluateAsync(new IElement[] { new ObjectValue(Request) }, this.variables);
+				IElement E = await this.SellEDalerLambda.EvaluateAsync(new IElement[] { new ObjectValue(Request) }, this.variables);
 				object Result = E.AssociatedObjectValue;
 
 				if (Result is decimal d)
@@ -304,7 +305,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 					return new PaymentResult(s.Value);
 				else
 				{
-					Log.Error("Cannot evaluate script for buying of eDaler. Result: " + (Result?.ToString() ?? "null"), this.Id);
+					Log.Error("Cannot evaluate script for selling of eDaler. Result: " + (Result?.ToString() ?? "null"), this.Id);
 					return new PaymentResult("Unexpected result received.");
 				}
 			}
