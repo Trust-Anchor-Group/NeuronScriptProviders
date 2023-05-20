@@ -6,6 +6,9 @@ Installable module that allows you to different types of service providers on a 
 
 * let users buy eDaler(R), 
 * sell eDaler(R), 
+
+TBD:
+
 * perform currency conversion, 
 * perform full KyC on identity applications, 
 * or partial, via the peer review process.
