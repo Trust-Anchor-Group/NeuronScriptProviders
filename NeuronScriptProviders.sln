@@ -8,12 +8,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TAG.Payments.Script", "TAG.Payments.Script\TAG.Payments.Script.csproj", "{6887C88A-B97C-4B4C-9DAC-6661C57FA36D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TAG.Payments.Script", "TAG.Payments.Script\TAG.Payments.Script.csproj", "{6887C88A-B97C-4B4C-9DAC-6661C57FA36D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5017484F-5469-431F-A40C-20D228FB7050}"
 	ProjectSection(SolutionItems) = preProject
 		Examples\Mock.BuyEDaler.config = Examples\Mock.BuyEDaler.config
 		Examples\Mock.BuyEDaler.xml = Examples\Mock.BuyEDaler.xml
+		Examples\Mock.SellEDaler.config = Examples\Mock.SellEDaler.config
+		Examples\Mock.SellEDaler.xml = Examples\Mock.SellEDaler.xml
 	EndProjectSection
 EndProject
 Global

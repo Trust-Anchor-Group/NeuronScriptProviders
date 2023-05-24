@@ -179,7 +179,9 @@ Following, is a basic example showing the structure of a `.config` file containi
 The solution contains a set of examples to illustrate how different services can be created. The examples reside in the
 [Examples](Examples) folder. The following examples are availsble:
 
-| File Name                                               | Description |
-|:--------------------------------------------------------|:------------|
-| [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config) | Mock service that publishes a simple service for buying eDaler, including payment options. |
-| [Mock.BuyEDaler.xml](Examples/Mock.BuyEDaler.xml)       | Mock smart contract used by the example service defined in [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config). |
+| File Name                                                 | Description |
+|:----------------------------------------------------------|:------------|
+| [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config)   | Mock service that publishes a simple service for buying eDaler, including payment options. |
+| [Mock.BuyEDaler.xml](Examples/Mock.BuyEDaler.xml)         | Mock smart contract used by the example service defined in [Mock.BuyEDaler.config](Examples/Mock.BuyEDaler.config). |
+| [Mock.SellEDaler.config](Examples/Mock.SellEDaler.config) | Mock service that publishes a simple service for selling eDaler, including payment options. |
+| [Mock.SellEDaler.xml](Examples/Mock.SellEDaler.xml)       | Mock smart contract used by the example service defined in [Mock.SellEDaler.config](Examples/Mock.SellEDaler.config). |
