@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using TAG.Payments.Script.Providers.BuyEDaler;
+using TAG.Payments.Script.Providers.Payment;
 using TAG.Payments.Script.Providers.SellEDaler;
 using Waher.Runtime.Inventory;
 
@@ -12,6 +13,7 @@ namespace TAG.Payments.Script
 	{
 		internal readonly static BuyEDalerServiceProvider buyEDalerServiceProvider = new BuyEDalerServiceProvider();
 		internal readonly static SellEDalerServiceProvider sellEDalerServiceProvider = new SellEDalerServiceProvider();
+		internal readonly static PaymentServiceProvider paymentServiceProvider = new PaymentServiceProvider();
 
 		/// <summary>
 		/// Script Provider module.
@@ -42,6 +44,7 @@ namespace TAG.Payments.Script
 		{
 			BuyEDalerServiceProvider.Clear();
 			SellEDalerServiceProvider.Clear();
+			PaymentServiceProvider.Clear();
 		}
 	}
 }

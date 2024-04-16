@@ -72,7 +72,8 @@ service will be available to users during the runtime of the Neuron(R), or until
 
 | Function                        | Description |
 |:--------------------------------|:------------|
-| `BuyEDalerService(Definition)`  | Creates a script-based service for buying eDaler. |
+| `BuyEDalerService(Definition)`  | Creates a script-based service for buying eDaler.  |
+| `PaymentService(Definition)`    | Creates a script-based service for payments.       |
 | `SellEDalerService(Definition)` | Creates a script-based service for selling eDaler. |
 
 The `Definition` argument available in all calls to the functions above, contain an object definition with a set of properties
@@ -120,6 +121,20 @@ methods that are recognized by the different functions. Names are case-insensiti
 | `GetOptions`         | Optional | λ(Request)          | Gets payment options to present to the user. The `Reqeust` argument is of type [`OptionsRequest`](TAG.Payments.Script/Providers/BuyEDaler/OptionsRequest.cs). The result is an array of objects ex-nihilo, each object representing an option, and each field or property in the object represents a contract parameter and value. |
 | `SellEDaler`		   | Required | λ(Request)          | Performs the requested task to sell eDaler using the service. The `Reqeust` argument is of type [`PaymentRequest`](TAG.Payments.Script/Providers/BuyEDaler/PaymentRequest.cs). Result can be number with the amount actually sold, or a physical quantity, with the unit representing the currency used, and the magnitude the amount. If a string is returned, it is considered an error, and no eDaler is assumed to have been sold. |
 | `Sell`               |          |                     | Alias for `SellEDaler` |
+
+### PaymentService(Definition)
+
+| Name                 | Use      | Type                | Description |
+|:---------------------|:--------:|:--------------------|:------------|
+| `Id`                 | Required | String              | Machine-readable ID of service |
+| `Name`               | Required | String              | Human-readable name of service. |
+| `IconUrl`            | Optional | String              | URL to icon representing service. |
+| `IconWidth`          | Optional | 0 <= Number <= 2048 | Width, in pixels, of icon representing service. |
+| `IconHeight`         | Optional | 0 <= Number <= 2048 | Height, in pixels, of icon representing service. |
+| `Icon`               | Optional | Image, Graph        | Alternative to providing `IconUrl`, `IconWidth` or `IconHeight`. |
+| `Supports`           | Optional | λ(String)           | How well the service supports a given currency. Result can be a boolean value or a Grade enumerated value. |
+| `Support`            |          |                     | Alias for `Supports` |
+| `Pay`		           | Required | λ(Request)          | Performs a payment using the service. The `Reqeust` argument is of type [`PaymentRequest`](TAG.Payments.Script/Providers/BuyEDaler/PaymentRequest.cs). Result can be number with the amount actually paid, or a physical quantity, with the unit representing the currency used, and the magnitude the amount. If a string is returned, it is considered an error, and no payment is assumed to have been performed. |
 
 ## .config-files
 
