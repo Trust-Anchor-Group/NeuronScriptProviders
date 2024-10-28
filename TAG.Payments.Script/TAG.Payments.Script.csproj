@@ -17,10 +17,10 @@
   <ItemGroup>
     <PackageReference Include="Paiwise" Version="1.5.1" />
     <PackageReference Include="Waher.Events" Version="1.2.1" />
-    <PackageReference Include="Waher.IoTGateway" Version="2.0.1" />
-    <PackageReference Include="Waher.Runtime.Inventory" Version="1.1.6" />
-    <PackageReference Include="Waher.Script" Version="2.6.10" />
-    <PackageReference Include="Waher.Script.Graphs" Version="2.1.7" />
+    <PackageReference Include="Waher.IoTGateway" Version="2.1.0" />
+    <PackageReference Include="Waher.Runtime.Inventory" Version="1.1.7" />
+    <PackageReference Include="Waher.Script" Version="2.7.0" />
+    <PackageReference Include="Waher.Script.Graphs" Version="2.2.1" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
