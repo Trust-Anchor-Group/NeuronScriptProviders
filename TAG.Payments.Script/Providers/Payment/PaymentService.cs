@@ -144,7 +144,7 @@ namespace TAG.Payments.Script.Providers.Payment
 		/// <param name="State">State object to pass on to callback method.</param>
 		/// <returns>Payment result.</returns>
 		public async Task<PaymentResult> Pay(decimal Amount, string Currency, string Description, string SuccessUrl, string FailureUrl, 
-			string CancelUrl, ClientUrlEventHandler ClientUrlCallback, object State)
+			string CancelUrl, EventHandlerAsync<ClientUrlEventArgs> ClientUrlCallback, object State)
 		{
 			try
 			{

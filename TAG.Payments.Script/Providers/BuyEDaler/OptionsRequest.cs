@@ -1,5 +1,6 @@
 ﻿using Paiwise;
 using System.Collections.Generic;
+using Waher.Events;
 using Waher.Persistence;
 
 namespace TAG.Payments.Script.Providers.BuyEDaler
@@ -19,7 +20,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <param name="ClientUrlCallback">Method to call if URL is needed to be sent to client.</param>
 		/// <param name="State">State object to pass on to callback method.</param>
 		public OptionsRequest(IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties, string SuccessUrl,
-			string FailureUrl, string CancelUrl, ClientUrlEventHandler ClientUrlCallback, object State)
+			string FailureUrl, string CancelUrl, EventHandlerAsync<ClientUrlEventArgs> ClientUrlCallback, object State)
 		{
 			this.IdentityProperties = IdentityProperties;
 			this.SuccessUrl = SuccessUrl;
@@ -52,7 +53,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <summary>
 		/// Method to call if URL is needed to be sent to client.
 		/// </summary>
-		public ClientUrlEventHandler ClientUrlCallback { get; }
+		public EventHandlerAsync<ClientUrlEventArgs> ClientUrlCallback { get; }
 
 		/// <summary>
 		/// State object to pass on to callback method.

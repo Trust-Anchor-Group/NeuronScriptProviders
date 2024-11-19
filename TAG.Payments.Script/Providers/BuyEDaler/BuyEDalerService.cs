@@ -207,7 +207,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		/// <returns>Array of available options.</returns>
 		public async Task<IDictionary<CaseInsensitiveString, object>[]> GetPaymentOptionsForBuyingEDaler(
 			IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties, string SuccessUrl,
-			string FailureUrl, string CancelUrl, ClientUrlEventHandler ClientUrlCallback, object State)
+			string FailureUrl, string CancelUrl, EventHandlerAsync<ClientUrlEventArgs> ClientUrlCallback, object State)
 		{
 			if (this.GetOptionsLambda is null)
 				return new IDictionary<CaseInsensitiveString, object>[0];
@@ -285,7 +285,7 @@ namespace TAG.Payments.Script.Providers.BuyEDaler
 		public async Task<PaymentResult> BuyEDaler(IDictionary<CaseInsensitiveString, object> ContractParameters,
 			IDictionary<CaseInsensitiveString, CaseInsensitiveString> IdentityProperties,
 			decimal Amount, string Currency, string SuccessUrl, string FailureUrl, string CancelUrl,
-			ClientUrlEventHandler ClientUrlCallback, object State)
+			EventHandlerAsync<ClientUrlEventArgs> ClientUrlCallback, object State)
 		{
 			try
 			{
