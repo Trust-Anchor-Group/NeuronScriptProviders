@@ -19,7 +19,7 @@ The solution contains the following C# projects:
 
 | Project               | Framework         | Description |
 |:----------------------|:------------------|:------------|
-| `TAG.Payments.Script` | .NET Standard 2.0 | Service module for the [TAG Neuron](https://lab.tagroot.io/Documentation/Index.md), permitting developers to develop integrations with service providers using [script](https://lab.tagroot.io/Script.md). |
+| `TAG.Payments.Script` | .NET Standard 2.1 | Service module for the [TAG Neuron](https://lab.tagroot.io/Documentation/Index.md), permitting developers to develop integrations with service providers using [script](https://lab.tagroot.io/Script.md). |
 
 ## Nugets
 
